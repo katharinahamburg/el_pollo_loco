@@ -1,0 +1,16 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*background-image: url('img/5_background/first_half_background.png');*/
+    background-color: rgba(211, 111, 11, 0.795);
+    cursor: grab;
+}
+
+canvas {
+background-color: rgb(44, 42, 42);
+border-radius: 15px;
+border:rgba(202, 105, 7, 0.915);
+cursor: none;
+}
+

@@ -2,9 +2,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*background-image: url('img/5_background/first_half_background.png');*/
-    background-color: rgba(211, 111, 11, 0.795);
+    background-image: url('img/skull2.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /*background-color: rgba(211, 111, 11, 0.795);*/
     cursor: grab;
+    color: rgb(233, 93, 12);
+    font-size: 40px;
 }
 
 canvas {

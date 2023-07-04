@@ -49,10 +49,11 @@ class Character extends MovableObject {
     currentImage = 0;
     walking_sound = new Audio('audio/running.mp3');
     jump_sound = new Audio('audio/pepe_jump.mp3');
+    hurt_sound = new Audio('audio/hurt.mp3');  // this.hurt_sound.play();
 
 
     constructor(){
-        super().loadImage(this.IMAGES_WALKING[0]);
+        super().loadImage('img/2_character_pepe/2_walk/W-21.png');
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
         this.loadImages(this.IMAGES_DEAD);

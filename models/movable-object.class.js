@@ -6,7 +6,7 @@ class MovableObject extends DrawableObject {
     acceleration = 1;
     energy = 100;
     lastHit = 0;
-    hurt_sound = new Audio('audio/hurt.mp3'); 
+    
     
 
 

@@ -4,7 +4,6 @@ class Coins extends CollectableObjects {
     height = 50;
    
 
-
     COINS_COLLECT = [
         'img/8_coin/coin_2.png'
 ];

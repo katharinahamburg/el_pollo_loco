@@ -13,6 +13,7 @@ console.log('My Character is', world.character);
 }
 
 window.addEventListener("keydown", (e) => {
+    
     if(e.keyCode == 39) {
         keyboard.RIGHT = true;
     }
@@ -33,6 +34,9 @@ window.addEventListener("keydown", (e) => {
         keyboard.SPACE = true;
     }
 
+    if(e.keyCode == 89) {
+        keyboard.Y = true;
+    }
 });
 
 
@@ -55,6 +59,9 @@ window.addEventListener("keyup", (e) => {
 
     if(e.keyCode == 32) {
         keyboard.SPACE = false;
+    }
+    if(e.keyCode == 89) {
+        keyboard.Y = false;
     }
 
 });

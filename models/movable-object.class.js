@@ -6,6 +6,7 @@ class MovableObject extends DrawableObject {
     acceleration = 1;
     energy = 100;
     lastHit = 0;
+    hurt_sound = new Audio('audio/hurt.mp3'); 
     
 
 
@@ -20,8 +21,12 @@ class MovableObject extends DrawableObject {
 
 
     isAboveGround(){
+        if(this instanceof ThrowableObject) {
+            return true;
+        } else {
         return this.y < 99;
     }
+}
 
    
 
@@ -57,7 +62,8 @@ class MovableObject extends DrawableObject {
 
         hit() {
             this.energy -= 20;
-            if (this.energy < 0) {
+            
+             if (this.energy < 0) {
                 this.energy = 0;
             } else { 
                 this.lastHit = new Date().getTime();
@@ -69,7 +75,7 @@ class MovableObject extends DrawableObject {
             let timepassed = new Date().getTime() - this.lastHit;
             timepassed = timepassed / 1000;
             return timepassed < 1;
-           
+            
         }
 
         isDead() {

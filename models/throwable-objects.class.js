@@ -1,7 +1,7 @@
 class ThrowableObject extends MovableObject {
 
-    speedX = 10;
-    speedY = 10;
+    //speedX = 10;
+    //speedY = 10;
 
 
 
@@ -23,9 +23,23 @@ BOTTLE_SPLASH = [
 ];
 
 
-constructor() {
+constructor(x, y) {
     super().loadImage('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png');
-    this.loadImages(this.BOTTLE_ROTATE);
-    
+    //this.loadImages(this.BOTTLE_ROTATE);
+    this.x = x;
+    this.y = y;
+    this.height = 90;
+    this.width = 70;
+    this.throw();
+}
+
+
+throw() {
+
+    this.speedY = 15;
+    this.applyGravity();
+    setInterval(() => {
+        this.x += 10;
+    }, 10);
 }
 }

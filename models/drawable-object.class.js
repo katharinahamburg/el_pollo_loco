@@ -8,8 +8,6 @@ class DrawableObject {
     width = 100; 
 
 
-
-
     loadImage(path){
 
         this.img = new Image(); 
@@ -24,8 +22,7 @@ class DrawableObject {
     
 
         drawFrame (ctx){
-
-            if(this instanceof Character || this instanceof Chicken || this instanceof Endboss){
+            if(this instanceof Character || this instanceof Chicken ||  this instanceof Endboss){
             ctx.beginPath();
             ctx.lineWidth = '3';
             ctx.strokeStyle = 'transparent';

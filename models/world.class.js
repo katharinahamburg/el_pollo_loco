@@ -6,6 +6,13 @@ class World {
     keyboard;
     camera_x = 0;
     statusBar = new StatusBar();
+    statusBarBottle = new StatusBarBottle();
+    statusBarCoins = new StatusBarCoins();
+    statusBarEndboss = new StatusBarEndboss();
+    collectBottle = new Bottle();
+    throwableObjects = [];
+    collectableObjects = [];
+    
 
     constructor(canvas, keyboard){
         this.ctx = canvas.getContext ('2d');
@@ -13,23 +20,37 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
-        this.checkCollisions();
+        this.run();
     }
 
     setWorld(){
         this.character.world = this;
     }
 
-    checkCollisions(){
+    run(){
         setInterval(() => {
-            this.level.enemies.forEach((enemy) => {
-                if(this.character.isColliding(enemy)) {
-                    this.character.hit();
-                    this.statusBar.setPercentage(this.character.energy);
-                }
-            });
+
+           this.checkCollisions();
+           this.checkThrowObjects();
         }, 200);
     }     
+
+
+    checkThrowObjects() {
+        if(this.keyboard.Y) {
+            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+            this.throwableObjects.push(bottle);
+        }
+    }
+
+    checkCollisions() {
+        this.level.enemies.forEach((enemy) => {
+            if(this.character.isColliding(enemy)) {
+                this.character.hit();
+                this.statusBar.setPercentage(this.character.energy);
+            }
+        });
+    }
 
 
     draw(){
@@ -41,13 +62,17 @@ class World {
         //camera for fixed objects
         this.ctx.translate(-this.camera_x, 0);
         this.addToMap(this.statusBar);
+        this.addToMap(this.statusBarEndboss);
+        //this.addToMap(this.statusBarCoins);
+        //this.addToMap(this.statusBarBottle);
         this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToMap(this.level.clouds);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
-        
-       this.ctx.translate(-this.camera_x, 0);
+        this.addObjectsToMap(this.throwableObjects);
+        this.addObjectsToMap(this.collectableObjects);
+        this.ctx.translate(-this.camera_x, 0);
 
         //draw() wird immer wieder aufgerufen
         let self = this;

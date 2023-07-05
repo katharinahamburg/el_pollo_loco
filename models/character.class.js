@@ -45,11 +45,13 @@ class Character extends MovableObject {
         'img/2_character_pepe/4_hurt/H-43.png'   
     ];  
 
+
+
     world;
     currentImage = 0;
     walking_sound = new Audio('audio/running.mp3');
     jump_sound = new Audio('audio/pepe_jump.mp3');
-    hurt_sound = new Audio('audio/hurt.mp3');  // this.hurt_sound.play();
+    hurt_sound = new Audio('audio/hurt.mp3'); 
 
 
     constructor(){
@@ -95,6 +97,8 @@ class Character extends MovableObject {
                 this.playAnimation(this.IMAGES_DEAD);
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
+               
+
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
             } else {
@@ -109,5 +113,16 @@ class Character extends MovableObject {
         this.speedY = 20;
     }
     
+    hit() {
+
+    }
+
+    diedAnimation() {
+        this.playAnimation(this.IMAGES_DEAD);
+        characterDeadSound.play();
+        setGameSoundsToNull();
+        gameLost();
+        this.stopsGame();
+    }
     
     }
